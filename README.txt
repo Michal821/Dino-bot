@@ -18,7 +18,7 @@ Uruchomienie:
 bash
 	#klonowanie repozytorium
 	git clone https://github.com/Michal821/Dino-bot.git
-	cd dino-automation-bot
+	cd Dino-bot
 
 	#tworzenie i aktywacja środowiska wirtualnego
 	python -m venv venv
