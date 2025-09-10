@@ -1,32 +1,30 @@
 Dino Bot (Selenium)
 
-Projekt demonstruje umiejętności automatyzacji (Selenium + JS injection) oraz podejście testerskie, w tym walidacje, raportowanie, logowanie i tworzenie screenshotów. Prezentuje również umiejętność pracy z przejrzystą strukturą repozytorium w kontekście QA/Automation.
+This project demonstrates automation skills (Selenium + JS injection) and a testing approach, including validation, reporting, logging, and screenshot creation. 
+It also demonstrates the ability to work with a clear repository structure in a QA/Automation context.
 
-Automatyzacja klasycznej gry "Chrome Dino" z wykorzystaniem Selenium WebDriver.  
+Automation of the classic "Chrome Dino" game using Selenium WebDriver.
 
-Wymagania:
-- Python 3.10+ (testowane na 3.11)
-- Google Chrome (ta sama wersja co ChromeDriver)
-- ChromeDriver w PATH
-- Pakiety Python z pliku `requirements.txt`:
-  ```bash
-  pip install -r requirements.txt
+Requirements:
+- Python 3.10+ (tested on 3.11)
+- Google Chrome (same version as ChromeDriver)
+- ChromeDriver in the PATH
+- Python packages from the `requirements.txt` file:
+```bash
+pip install -r requirements.txt
 
+Runtime:
+python dino_bot.py
 
-Uruchomienie:
-	python dino_bot.py
+Features:
 
+Automatic control of Dino in the chromedino.com game.
+Response to obstacles (xPos < threshold).
+Tracks obstacles avoided and distance traveled.
+Repeats the game a specified number of times (default: 5).
+Results report in CSV format (results.csv).
+Screenshots after each game in the screenshots/ folder.
 
-Funkcjonalności:
-	Automatyczne sterowanie Dino w grze chromedino.com . 
-	Reagowanie na przeszkody (xPos < threshold). 
-	Liczenie ominiętych przeszkód i przebiegniętego dystansu. 
-	Powtarzanie gry określoną liczbę razy (domyślnie 5). 
-	Raport wyników w formacie CSV (results.csv). 
-	Screenshoty po każdej grze w folderze screenshots/.
-
-
-Przykładowe logi w folderze console logs.
-
+Sample logs in the console logs folder.
 
 

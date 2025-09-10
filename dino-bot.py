@@ -13,39 +13,39 @@ class DinoBot:
         self.jump_threshold = jump_threshold
         self.results_file = "results.csv"
 
-        # tworzenie folderu
+        # creating a folder
         os.makedirs("screenshots", exist_ok=True)
 
-        # Konfiguracja Selenium
+        # Configuration Selenium
         options = webdriver.ChromeOptions()
         options.add_argument("--mute-audio")
         self.driver = webdriver.Chrome(options=options)
 
-        # Otwieranie gry
+        # Open the game
         self.driver.get("https://chromedino.com/")
         time.sleep(2)
 
         self.body = self.driver.find_element(By.TAG_NAME, "body")
 
-        # Tworzenie pliku CSV z nagłówkami
+        # Creating a CSV file
         if not os.path.exists(self.results_file):
             with open(self.results_file, mode="w", newline="") as f:
                 writer = csv.writer(f)
                 writer.writerow(["Game", "ObstaclesCleared", "Distance", "Timestamp"])
 
     def play(self):
-        """Rozegraj kilka gier Dino"""
+        """Play Dino Games"""
         for game in range(1, self.games_to_play + 1):
-            print(f"\n=== Gra {game}/{self.games_to_play} ===")
+            print(f"\n=== Game {game}/{self.games_to_play} ===")
             obstacles_cleared = 0
 
-            # Start gry
+            # Start
             self.body.send_keys(Keys.SPACE)
             time.sleep(0.5)
 
             while True:
                 try:
-                    # Pobieranie przeszkod
+                    # Obstacle
                     obstacles = self.driver.execute_script(
                         "return Runner.instance_.horizon.obstacles"
                     )
@@ -60,25 +60,25 @@ class DinoBot:
                                 "return Math.floor(Runner.instance_.distanceRan)"
                             )
                             print(
-                                f"Skok! Przeszkód ominiętych: {obstacles_cleared}, dystans: {distance}"
+                                f"Jump, obstacle missed: {obstacles_cleared}, distance: {distance}"
                             )
 
-                    # Sprawdzanie końca gry
+                    # End game decetion
                     crashed = self.driver.execute_script("return Runner.instance_.crashed")
                     if crashed:
                         distance = self.driver.execute_script(
                             "return Math.floor(Runner.instance_.distanceRan)"
                         )
                         print(
-                            f"KONIEC GRY – ominięto {obstacles_cleared} przeszkód, dystans: {distance}"
+                            f"END – {obstacles_cleared} objects skipped, distance: {distance}"
                         )
 
                         # Screenshot
                         screenshot_name = f"screenshots/game_{game}.png"
                         self.driver.save_screenshot(screenshot_name)
-                        print(f"Screenshot zapisany: {screenshot_name}")
+                        print(f"Screenshot saved: {screenshot_name}")
 
-                        # Zapis do CSV
+                        # Save CSV
                         with open(self.results_file, mode="a", newline="") as f:
                             writer = csv.writer(f)
                             writer.writerow(
@@ -89,10 +89,10 @@ class DinoBot:
                     time.sleep(0.05)
 
                 except Exception as e:
-                    print(f"Błąd w grze {game}: {e}")
+                    print(f"error? {game}: {e}")
                     break
 
-            # Restart gry
+            # Restart the game
             self.driver.execute_script("Runner.instance_.restart()")
             time.sleep(1)
 
@@ -104,4 +104,4 @@ if __name__ == "__main__":
     bot = DinoBot(games_to_play=5, jump_threshold=120)
     bot.play()
     bot.quit()
-    print("\n=== Gry zakończone ===")
+    print("\n=== End game ===")
