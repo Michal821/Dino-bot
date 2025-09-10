@@ -20,13 +20,6 @@ bash
 	git clone https://github.com/Michal821/Dino-bot.git
 	cd Dino-bot
 
-	#tworzenie i aktywacja środowiska wirtualnego
-	python -m venv venv
-	# Windows
-	venv\Scripts\activate
-	# Linux/Mac
-	source venv/bin/activate
-
 	#instalacja zależności
 	pip install -r requirements.txt
 
