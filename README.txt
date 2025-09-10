@@ -14,16 +14,6 @@ Wymagania:
 
 
 Uruchomienie:
-
-bash
-	#klonowanie repozytorium
-	git clone https://github.com/Michal821/Dino-bot.git
-	cd Dino-bot
-
-	#instalacja zależności
-	pip install -r requirements.txt
-
-	#uruchomienie
 	python dino_bot.py
 
 
