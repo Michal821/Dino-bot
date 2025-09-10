@@ -17,7 +17,7 @@ Uruchomienie:
 
 bash
 	#klonowanie repozytorium
-	git clone https://github.com/<twoje-repo>/dino-automation-bot.git
+	git clone https://github.com/Michal821/Dino-bot.git
 	cd dino-automation-bot
 
 	#tworzenie i aktywacja środowiska wirtualnego
